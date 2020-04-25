@@ -8,8 +8,8 @@ API_KEY_SECRET = environ['API_KEY_SECRET']
 ACCESS_TOKEN = environ['ACCESS_TOKEN']
 ACCESS_TOKEN_SECRET = environ['ACCESS_TOKEN_SECRET']
 
-TRACK_TERM = '759063401779920896' # '1705276416'
-TWEET_TEXT = "@YisusIsBack Esto es una prueba"
+TRACK_TERM =  '1705276416'
+TWEET_TEXT = " Esto es una prueba"
 api = TwitterAPI(API_KEY, 
                     API_KEY_SECRET,
                     ACCESS_TOKEN,
