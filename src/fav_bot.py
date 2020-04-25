@@ -1,8 +1,14 @@
 from TwitterAPI import TwitterAPI
+from os import environ
 
-from private import *
+# from private import *
 
-TRACK_TERM = '759063401779920896'
+API_KEY = environ['API_KEY']
+API_KEY_SECRET = environ['API_KEY_SECRET']
+ACCESS_TOKEN = environ['ACCESS_TOKEN']
+ACCESS_TOKEN_SECRET = environ['ACCESS_TOKEN_SECRET']
+
+TRACK_TERM = '759063401779920896' # '1705276416'
 TWEET_TEXT = "@YisusIsBack Esto es una prueba"
 api = TwitterAPI(API_KEY, 
                     API_KEY_SECRET,
@@ -29,4 +35,19 @@ def reply_stream_tweets():
             t = api.request('statuses/update', {'status': TWEET_TEXT, 'in_reply_to_status_id': tweet_id})
             print('SUCCESS' if t.status_code == 200 else 'PROBLEM: ' + t.text)
 
-reply_stream_tweets()
+def fav_tweets():
+    r = api.request('statuses/filter', {'follow': TRACK_TERM})
+
+    for item in r:
+        print(item['text'] if 'text' in item else item)
+
+        if 'user' in item:
+            if item['user']['id_str'] == TRACK_TERM :
+                if 'id' in item:
+                    tweet_id = item['id']
+
+                print(item['text'] if 'text' in item else item)
+                t = api.request('favorites/create', {'id': tweet_id})
+                print('SUCCESS' if t.status_code == 200 else 'PROBLEM: ' + t.text)
+
+fav_tweets()
