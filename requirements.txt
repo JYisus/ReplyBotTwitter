@@ -1,2 +1,2 @@
-TwitterAPI
-Flask
+TwitterAPI==2.5.11
+Flask==1.1.2
