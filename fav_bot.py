@@ -50,4 +50,5 @@ def fav_tweets():
                 t = api.request('favorites/create', {'id': tweet_id})
                 print('SUCCESS' if t.status_code == 200 else 'PROBLEM: ' + t.text)
 
-fav_tweets()
+if __name__ == "__main__":
+    fav_tweets()
