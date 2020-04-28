@@ -7,7 +7,7 @@ seed(1)
 
 class TextGenerator:
     def __init__(self):
-        text_source = utils.getenv('TEXT_SOURCE','edgy.txt')
+        text_source = utils.getenv('TEXT_SOURCE','resources/edgy.txt')
         textfile = open(text_source,"r")
         texts = textfile.readlines()
         textfile.close()
