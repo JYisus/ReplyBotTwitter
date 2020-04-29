@@ -11,10 +11,8 @@ ACCESS_TOKEN_SECRET = utils.getenv('ACCESS_TOKEN_SECRET','')
 STALKED_ACCOUNT = utils.getenv('STALKED_ACCOUNT','')
 
 def check_credentials(credentials):
-    for item in credentials:
-        if item == '':
-            return False
-    return True
+    not_empty_items = list( filter(lambda item: item != '', credentials))
+    return len(not_empty_items) == len(credentials)
 
 if __name__ == "__main__":
     credentials = {
@@ -24,7 +22,7 @@ if __name__ == "__main__":
         'access_token_secret':ACCESS_TOKEN_SECRET
     }
 
-    if check_credentials(credentials):
+    if check_credentials(credentials) & (STALKED_ACCOUNT != ''):
         bot = TwitterBot(credentials, STALKED_ACCOUNT)
         bot.reply_tweets()
     else:
