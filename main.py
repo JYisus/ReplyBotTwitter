@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from twitter_bot import TwitterBot
 from os import environ
 import utils
@@ -22,7 +24,7 @@ if __name__ == "__main__":
         'access_token_secret':ACCESS_TOKEN_SECRET
     }
 
-    if check_credentials:
+    if check_credentials(credentials):
         bot = TwitterBot(credentials, STALKED_ACCOUNT)
         bot.reply_tweets()
     else:
