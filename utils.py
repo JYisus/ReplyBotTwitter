@@ -7,7 +7,5 @@ def getenv(env, default_value):
         return default_value
 
 def clean_carriage_return(lines):
-    formatted_lines = []
-    for line in lines:
-        formatted_lines.append(line.replace('\n',''))
+    formatted_lines = list( map(lambda text: text.replace('\n',''), lines))
     return formatted_lines
